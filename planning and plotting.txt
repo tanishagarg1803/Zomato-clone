@@ -1,0 +1,109 @@
+ZOMATO PLANNING:
+we will use MERN stack , tailwind , devOps  , AWS ,...
+we will use redux for frontend management for complex data and context for less data
+
+WORK FLOW:
+we made the project -> upload on github -> CICD (deploy to AWSautomatically)
+
+
+PAGES: 
+Public-(these pages can be accessed by everyone without authenticating)
+1.home page- deleivery page
+2.dining out page
+3. night life page
+4. nutrition page
+5. restaurant page
+
+Private-(pages need to be authenticated)
+1.cart page
+2.settings page ( we can make user profile , security , etc pages in the settings page only using layout )
+
+-> now zomato has become like social media app, earlier it was just only like go order food and get deleivered
+but now if anyone is food blogger or any food influencer then they can read and write and follow you.
+so we will not be doing that
+we only work on core feature of zomato i.e making food ordered from single restaurant and the payment.
+
+->we will implement all the features of zomato except new ones like: blog post, followers , recently viewed( as
+it will take too much amount of space as there will be toomuch read and write operations in it so we have to 
+pay for the aws)
+
+
+TECHNICAL DETAILS :
+1. MongoDB as database (to store all restaurant , food , menu , users , reviews data)
+2. AWS S3 as block storage (to store images which user will post)
+
+->we can also store in mongodb but it is not mainly build for that and there will 
+be too much of work too work upon that so we use AWS is a block storage, block storage is build to store
+all kind of files like videos, images , pdf , documents , everything.
+
+MAPS: 
+we cant use google maps as we have to pay for it so we will use the same map use by zomato i.e 
+openStreetMap , it is a open source map,  for react it is leaflet map so we will use that.
+
+MENUS:
+menus are simply images, we can store in our database and get it.
+
+BUTTONS:
+we have to style our own buttons
+
+CONDITION:
+ we are allowed to check out with only one restaurant at once, we can order any no of food in 
+quantity from a single restaurant. if we try to do that then it will delete the previous restaurant cart and add 
+from new.
+this is the restriction from the zomato to order food from single restaurant
+
+PAYMENT GATEWAY:
+zomato is using some other payment gateway but we are going to use razorpay gateway.
+
+AADITIONAL FEATURE:
+if we scroll through the website, the images are appearing late .
+it is known as LAZY LOADING i.e to avoid network calls(API calls) as they have too many no of APIs which 
+store large amount of data so it will take minimum 2 mins to load the page so user will not prefer it.
+so to avoid it we use lazy loading technique to get the data
+we will have INTERSECTION OBSERVER on the screen which will be observing the viewport
+so we will have a javascript sensor to observe the viewport , so whenever we scroll it makes API call 
+to fetch 1 or 2 data , it will reduce network calll and the load of the server.
+
+LOCATION FEATURE:
+we have to add location feature from javascript 
+
+
+DATABASE PLANNING: (API planning)
+we plan our database as DECOUPLED
+
+decoupled is like taking everything differently i.e everything seperated.
+ex: if we add reviews in users or restaurant data then during API call we first have to call users/restaurant
+then do some operations to get reviews data and if we wnat to change the schema of review then 
+it will effect the users/restaurant data also , so we try to decoupled everything. and also it will increase the 
+write cost as too many operations are used to update single thing.
+
+1. user database ( user name, no , address,...)
+2. restaurant database  ( name , address , overview . cuisines and ammenities they provide)
+3. food database 
+4. menus database 
+5. images database (food images , restaurant images , reveiw images)
+6. reviews database
+7. order database
+
+Restaurant data : we will add it manually ( we will add it from excel sheet and convert it into json object)
+
+
+AUTHENTICATION:
+JWT- JSON Web Tokens - this will be used for authentication ( restricting the user) 
+as well as authorization( permission to user )
+ it depends upon user to user  like user only have
+access to restaurant data and to order food , restaurant owner user have access to edit their restaurant data, 
+zomato admin user have access to look up over all the things
+
+API PLANNING:
+1. AUTH:to authenticate for google account, email and password
+2. FOOD: to get all food and getting food based on id and specific food
+3. RESTAURANT: to get all restaurant as well as specific restaurant
+4. MENU: to get all the menu as well as specific menu based on filter
+5. ORDER: create an irder get an order get all orders
+6. PAYMENTS: (razorpay payment gateway) to process the data and to store that in database
+7. REVIEWS:  to handle all the review 
+8. USER: to store all the user information
+9. IMAGES: to handle all images
+
+
