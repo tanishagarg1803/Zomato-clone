@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { IoFastFoodOutline, IoNutritionOutline } from "react-icons/io5";
 import { BiDrink } from "react-icons/bi"
 
 const MobileTabs = () => {
+    const [allTypes, setAllTypes] = useState([
+        {
+            id: `${Date.now()}`,
+            icon: <RiShoppingBag3Line />,
+            name: "Delivery",
+            isActive: False,
+        },
+        {
+            id: `${Date.now()}`,
+            icon: <IoFastFoodOutline />,
+            name: "Dining Out",
+            isActive: False,
+        },
+        {
+            id: `${Date.now()}`,
+            icon: <BiDrink />,
+            name: "Night life",
+            isActive: False,
+        },
+        {
+            id: `${Date.now()}`,
+            icon: <IoNutritionOutline />,
+            name: "Nutrition",
+            isActive: False,
+        },
+    ]);
     const { type } = useParams();
+
     return (
         <>
             <div className="lg:hidden bg-white shadow-lg p-3 fixed bottom-0 z-10 w-full flex items-center justify-between md:justify-evenly text-gray-500 border">
