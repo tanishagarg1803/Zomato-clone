@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { IoFastFoodOutline, IoNutritionOutline } from "react-icons/io5";
 import { BiDrink } from "react-icons/bi"
+import classnames from "classnames";
 
 const MobileTabs = () => {
     const [allTypes, setAllTypes] = useState([
@@ -88,8 +89,8 @@ const LargeTabs = () => {
             <div className="hidden lg:flex gap-14 container px-20 mx-auto">
                 {allTypes.map((items) => (
                     <Link to={`/${items.id}`}>
-                        <div className="flex items-center gap-3">
-                            <div className={`w-16 h-16 bg-${type === items.id ? items.activeColor : "gray"}-100 p-4 rounded-full`}>
+                        <div className={classnames("flex items-center gap-3 pb-2 transition duration-700 ease-in-out", { "border-b-2 border-zomato-400": type === items.id, })}>
+                            <div className={classnames("w-16 h-16 bg-gray-100 p-4 rounded-full", { [`bg-${items.activeColor}-100`]: type === items.id })}>
                                 <img src={type === items.id ? items.imageActive : items.imageDefault} alt="image" className="w-full h-full" />
                             </div>
                             <h3 className={type === items.id ? "text-xl text-zomato-400" : "text-xl text-gray-700"}>{items.name}</h3>
