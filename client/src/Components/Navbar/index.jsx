@@ -54,7 +54,7 @@ const LargeNav = () => {
 const Navbar = () => {
     return (
         <>
-            <nav className="py-4 p-4 flex bg-white shadow-md items-center ">
+            <nav className="py-4 p-4 flex bg-white shadow-md lg:shadow-none items-center ">
                 <MobileNav />
                 <LargeNav />
             </nav>
